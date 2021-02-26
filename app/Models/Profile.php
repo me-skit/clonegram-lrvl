@@ -10,6 +10,8 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function user()
     {
         return $this->BelongsTo(User::class);
