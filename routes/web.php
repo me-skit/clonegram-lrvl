@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Mail\WelcomeMail;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\FollowsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,16 @@ use App\Http\Controllers\ProfilesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
+Route::get('/email', function () {
+  return new WelcomeMail();
+});
+
+Route::post('follow/{id}', [FollowsController::class, 'store']);
+
+Route::get('/', [PostsController::class, 'index']);
 Route::get('/p/create', [PostsController::class, 'create']);
 Route::get('/p/{id}', [PostsController::class, 'show']);
 Route::post('/p', [PostsController::class, 'store']);

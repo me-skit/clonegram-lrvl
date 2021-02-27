@@ -3,7 +3,8 @@
   border-right: 1px solid #333;
 }
 
-.user-photo {
-  height: 128px;
+.user-thumb {
+  height: 40px;
+  max-width: 40px;
 }
 
